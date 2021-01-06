@@ -2,18 +2,6 @@ import React, { Component } from 'react';
 import classes from './Person.module.css'
 
 class Person extends Component {
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Person.js] shouldComponent');
-        return true;
-    }
-    getSnapshotBeforeUpdate(prevProps, prevState) {
-        console.log('[Person.js] getSnapshotBefore update');
-        return { message: 'snapshots' };
-    }
-    componentDidUpdate(prevUpdate, preState, snapshot) {
-        console.log('[Person.js] componentDidUpdate...', snapshot);
-    }
     render() {
         console.log('[person.js] rendering...');
         return (
