@@ -3,9 +3,12 @@ import classes from './Cockpit.module.css';
 
 const Cockpit = (props) => {
 
+    // if we pass [](empty array) then it call only once/initially
+    // if we pass [arg], then it will call when arg passes. useEffect call depent on args
+    // if we not pass any array then it will call every time when rerendering the whole app.
     useEffect(()=>{
         console.log('[cockpit.js] useEffect');
-    });
+    },[props.persons]);
 
     const assigned = [];
     let btnClass = '';
