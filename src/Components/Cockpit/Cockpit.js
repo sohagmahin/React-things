@@ -7,7 +7,7 @@ const Cockpit = (props) => {
     // if we pass [arg], then it will call when arg passes. useEffect call depent on args
     // if we not pass any array then it will call every time when rerendering the whole app.
     useEffect(()=>{
-        console.log('[cockpit.js] useEffect');
+        setTimeout(()=>alert('useEffect alert'),1000);
     },[props.persons]);
 
     const assigned = [];
