@@ -8,7 +8,18 @@ const Cockpit = (props) => {
     // if we not pass any array then it will call every time when rerendering the whole app.
     useEffect(()=>{
         setTimeout(()=>alert('useEffect alert'),1000);
+        return()=>{
+            console.log('[Cockpit.js] cleanup work in useEffect ')
+        }
+        
     },[props.persons]);
+
+    useEffect(()=>{
+        console.log('[Cockpit.js] useEffect2');
+        return ()=>{
+            console.log('[Cockpit.js] cleanup work in useEffect2');
+        }
+    });
 
     const assigned = [];
     let btnClass = '';
