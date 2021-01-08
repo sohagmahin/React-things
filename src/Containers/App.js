@@ -93,7 +93,7 @@ class App extends Component {
         <button onClick={() => { this.setState({ showCockpit: false }) }}>Show Cockpit</button>
         {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
-          persons={this.state.persons}
+          personsLength={this.state.persons.length}
           isShowPerson={this.state.showPerson}
           togglePerson={this.onPersonToggle}
         /> : null
