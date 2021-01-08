@@ -5,6 +5,7 @@ import Cockpit from '../Components/Cockpit/Cockpit';
 import witClasses from '../hoc/withClasses';
 import Aux from '../hoc/Aux';
 import withClasses from '../hoc/withClasses';
+import AuthContext from '../Context/auth-context';
 
 class App extends Component {
 
@@ -55,8 +56,8 @@ class App extends Component {
     })
   }
 
-  onChangeAuthenticate = ()=>{
-    this.setState({isAuthenticated : !this.state.isAuthenticated});
+  onChangeAuthenticate = () => {
+    this.setState({ isAuthenticated: !this.state.isAuthenticated });
   }
 
 
@@ -96,26 +97,31 @@ class App extends Component {
             persons={this.state.persons}
             clicked={this.deletePerson}
             clickedChanges={this.onChangeHandler}
-            AuthenticateFlag = {this.state.isAuthenticated}
           />
         </div>
       );
     }
-
-
-
+    
     return (
       <Aux>
-        <button onClick={() => { this.setState({ showCockpit: false }) }}>Show Cockpit</button>
-        {this.state.showCockpit ? <Cockpit
-          title={this.props.appTitle}
-          personsLength={this.state.persons.length}
-          isShowPerson={this.state.showPerson}
-          togglePerson={this.onPersonToggle}
-          onAuthenticate={this.onChangeAuthenticate}
-        /> : null
-        }
-        {person}
+        <AuthContext.Provider
+          value={{
+            Authenticate: this.state.isAuthenticated,
+            login : this.onChangeAuthenticate,
+          }}>
+
+          <button onClick={() => { this.setState({ showCockpit: false }) }}>Show Cockpit</button>
+          
+          {this.state.showCockpit ? <Cockpit
+            title={this.props.appTitle}
+            personsLength={this.state.persons.length}
+            isShowPerson={this.state.showPerson}
+            togglePerson={this.onPersonToggle}
+          /> : null
+          }
+
+          {person}
+        </AuthContext.Provider>
       </Aux>
 
     );
