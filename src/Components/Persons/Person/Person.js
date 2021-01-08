@@ -6,11 +6,11 @@ import PropTypes from 'prop-types'
 
 class Person extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.inputElement = React.createRef();
     }
-    componentDidMount(){
+    componentDidMount() {
         this.inputElement.current.focus();
     }
 
@@ -19,6 +19,7 @@ class Person extends Component {
         return (
             // <div className={classes.Person}>
             <Aux>
+                {this.props.isAuth ? <p>Authenticated</p> : <p>Please log in</p>}
                 <p onClick={this.props.click}>
                     This is {this.props.name}. And age is {this.props.age}
                 </p>
@@ -30,11 +31,11 @@ class Person extends Component {
     }
 }
 
-    Person.propTypes = {
-        onClick: PropTypes.func,
-        name: PropTypes.string,
-        age: PropTypes.number,
-        onChange: PropTypes.func,
+Person.propTypes = {
+    onClick: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    onChange: PropTypes.func,
 }
 
 export default withClasses(Person, classes.Person);

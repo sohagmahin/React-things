@@ -37,6 +37,7 @@ class Persons extends PureComponent {
                 age={person.age}
                 key={person.id}
                 clickChange={(event) => this.props.clickedChanges(event, person.id)}
+                isAuth = {this.props.AuthenticateFlag}
             />
             )
         });

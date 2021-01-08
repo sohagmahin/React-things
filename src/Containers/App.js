@@ -23,6 +23,7 @@ class App extends Component {
     showPerson: false,
     showCockpit: true,
     changeCounter: 0,
+    isAuthenticated: false,
   };
 
   deletePerson = (personIndex) => {
@@ -46,13 +47,18 @@ class App extends Component {
     persons[personIndex] = person;
 
     console.log(persons[personIndex].name);
-    this.setState((prevState,props) => {
+    this.setState((prevState, props) => {
       return {
         persons: persons,
         changeCounter: prevState.changeCounter + 1
       }
     })
   }
+
+  onChangeAuthenticate = ()=>{
+    this.setState({isAuthenticated : !this.state.isAuthenticated});
+  }
+
 
   onPersonToggle = () => {
     this.setState({ showPerson: !this.state.showPerson });
@@ -90,6 +96,7 @@ class App extends Component {
             persons={this.state.persons}
             clicked={this.deletePerson}
             clickedChanges={this.onChangeHandler}
+            AuthenticateFlag = {this.state.isAuthenticated}
           />
         </div>
       );
@@ -105,6 +112,7 @@ class App extends Component {
           personsLength={this.state.persons.length}
           isShowPerson={this.state.showPerson}
           togglePerson={this.onPersonToggle}
+          onAuthenticate={this.onChangeAuthenticate}
         /> : null
         }
         {person}
