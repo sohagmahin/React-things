@@ -22,6 +22,7 @@ class App extends Component {
     ],
     showPerson: false,
     showCockpit: true,
+    changeCounter: 0,
   };
 
   deletePerson = (personIndex) => {
@@ -30,7 +31,7 @@ class App extends Component {
     const persons = [...this.state.persons];//copy data from persons then copy to...
     persons.splice(personIndex, 1);
     this.setState({
-      persons: persons
+      persons: persons,
     })
   }
   onChangeHandler = (event, id) => {
@@ -45,7 +46,12 @@ class App extends Component {
     persons[personIndex] = person;
 
     console.log(persons[personIndex].name);
-    this.setState({ persons: persons });
+    this.setState((prevState,props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      }
+    })
   }
 
   onPersonToggle = () => {
@@ -58,7 +64,7 @@ class App extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[App.js] shouldComponentUpdate...');
-  
+
     return true;
   }
 
@@ -107,4 +113,4 @@ class App extends Component {
     );
   }
 }
-export default withClasses(App,classes.App);
+export default withClasses(App, classes.App);
