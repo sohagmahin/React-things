@@ -7,11 +7,11 @@ class Person extends Component {
         console.log('[person.js] rendering...');
         return (
             // <div className={classes.Person}>
-            <Fragment>
+            <Aux>
                 <p onClick={this.props.click}>This is {this.props.name}. And age is {this.props.age}</p>
                 <p>{this.props.children}</p>
                 <input type='text' onChange={this.props.clickChange} value={this.props.name}></input>
-            </Fragment>
+            </Aux>
         );
     }
 }

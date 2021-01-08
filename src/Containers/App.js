@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.module.css';
 import Persons from '../Components/Persons/Persons';
 import Cockpit from '../Components/Cockpit/Cockpit';
+import WitClasses from '../hoc/WithClasses';
 
 class App extends Component {
 
@@ -89,7 +90,7 @@ class App extends Component {
 
 
     return (
-      <div className={classes.App}>
+      <WitClasses classes={classes.App}>
         <button onClick={() => { this.setState({ showCockpit: false }) }}>Show Cockpit</button>
         {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
@@ -99,7 +100,7 @@ class App extends Component {
         /> : null
         }
         {person}
-      </div>
+      </WitClasses>
 
     );
   }
