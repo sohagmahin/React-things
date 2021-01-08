@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import classes from './Person.module.css';
 import Aux from '../../../hoc/Aux';
+import withClasses from '../../../hoc/withClasses';
 
 class Person extends Component {
     render() {
@@ -16,4 +17,4 @@ class Person extends Component {
     }
 }
 
-export default Person;
+export default withClasses (Person,classes.Person);
