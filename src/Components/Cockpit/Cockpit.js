@@ -1,10 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import classes from './Cockpit.module.css';
 import AuthContext from '../../Context/auth-context';
 
 const Cockpit = (props) => {
 
     const toggleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
+
+    console.log(authContext.Authenticate);
+
     // if we pass [](empty array) then it call only once/initially
     // if we pass [arg], then it will call when arg passes. useEffect call depent on args
     // if we not pass any array then it will call every time when rerendering the whole app.
@@ -42,9 +46,9 @@ const Cockpit = (props) => {
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
             <button ref={toggleBtnRef} className={btnClass} onClick={props.togglePerson}> Toogle Person </button>
-            <AuthContext.Consumer>
-            {(context)=> <button onClick={context.login}>Log In</button>}
-            </AuthContext.Consumer>
+         
+             <button onClick={authContext.login}>Log In</button>
+           
             <p className={assigned.join(' ')}>This is persons</p>
         </div>
     );
